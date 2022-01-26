@@ -10,7 +10,7 @@ pip3 install webssh
 ---------------
 
 ```
-wssh --port=8080 --sslport=4433 --certfile='cert.crt' --keyfile='cert.key' --xheaders=False
+wssh --port=8080 --sslport=8443 --certfile='cert.crt' --keyfile='cert.key' --xheaders=False
 ```
 
  --policy=reject 
@@ -19,7 +19,7 @@ wssh --port=8080 --sslport=4433 --certfile='cert.crt' --keyfile='cert.key' --xhe
 配置自启动
 ----------
 
-编辑 `/lib/systemd/system/wssh.service
+编辑 `/lib/systemd/system/wssh.service`
 
 ```
 [Unit]
@@ -34,7 +34,7 @@ Type=exec
 User=root
 #User=nobody
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/wssh --address='127.0.0.1' --xheaders=False
+ExecStart=/usr/local/bin/wssh --port=8080  --sslport=8443 --certfile='cert.crt' --keyfile='cert.key' --hostfile='/home/darkstar/.ssh/known_hosts' --xheaders=False --policy=reject
 Restart=on-failure
 
 [Install]
