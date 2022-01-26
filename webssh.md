@@ -50,16 +50,6 @@ URL 参数
 http://localhost:8888/?hostname=xx&username=yy&password=str_base64_encoded
 ```
 
-背景颜色
-```bash
-http://localhost:8888/#bgcolor=green
-```
-
-字体颜色
-```bash
-http://localhost:8888/#fontcolor=red
-```
-
 用户自定义网页 title
 ```bash
 http://localhost:8888/?title=my-ssh-server
@@ -69,21 +59,3 @@ http://localhost:8888/?title=my-ssh-server
 ```bash
 http://localhost:8888/#encoding=gbk
 ```
-
-字体大小
-```bash
-http://localhost:8888/#fontsize=24
-```
-
-登录后执行命令
-```bash
-http://localhost:8888/?command=pwd
-```
-
-终端类型
-```bash
-http://localhost:8888/?term=xterm-256color
-```
-
-
-
