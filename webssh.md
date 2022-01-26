@@ -41,46 +41,46 @@ WantedBy=multi-user.target
 
 加上 `--policy=reject` 参数后，只有 known_hosts 保存的主机才允许通过 Webssh 的页面连接。当 known_hosts 更改后，需要运行 `systemctl restart wssh.service` 以便重新读取 known_hosts 文件。
 
-### URL Arguments
+URL 参数
+--------
 
-Support passing arguments by url (query or fragment) like following examples:
 
-Passing form data (password must be encoded in base64, privatekey not supported)
+在 URL 中输入主机、用户名及密码 (密码必须用 base64 编码， 不支持 privatekey )
 ```bash
 http://localhost:8888/?hostname=xx&username=yy&password=str_base64_encoded
 ```
 
-Passing a terminal background color
+背景颜色
 ```bash
 http://localhost:8888/#bgcolor=green
 ```
 
-Passing a terminal font color
+字体颜色
 ```bash
 http://localhost:8888/#fontcolor=red
 ```
 
-Passing a user defined title
+用户自定义网页 title
 ```bash
 http://localhost:8888/?title=my-ssh-server
 ```
 
-Passing an encoding
+字符编码
 ```bash
 http://localhost:8888/#encoding=gbk
 ```
 
-Passing a font size
+字体大小
 ```bash
 http://localhost:8888/#fontsize=24
 ```
 
-Passing a command executed right after login
+登录后执行命令
 ```bash
 http://localhost:8888/?command=pwd
 ```
 
-Passing a terminal type
+终端类型
 ```bash
 http://localhost:8888/?term=xterm-256color
 ```
