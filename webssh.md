@@ -12,9 +12,6 @@ pip3 install webssh
 ```
 wssh --port=8080 --sslport=8443 --certfile='cert.crt' --keyfile='cert.key' --xheaders=False
 ```
-
- --policy=reject 
- Try to use reject policy as the missing host key policy along with your verified known_hosts, this will prevent man-in-the-middle attacks. The idea is that it checks the system host keys file("~/.ssh/known_hosts") and the application host keys file("./known_hosts") in order, if the ssh server's hostname is not found or the key is not matched, the connection will be aborted.
  
 配置自启动
 ----------
@@ -40,3 +37,5 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
+
+加上 `--policy=reject` 参数后，只有 known_hosts 保存的主机才允许通过 Webssh 的页面连接。当 known_hosts 更改后，需要运行 `systemctl restart wssh.service` 以便重新读取 known_hosts 文件。
