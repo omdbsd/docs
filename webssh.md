@@ -10,7 +10,7 @@ pip3 install webssh
 ---------------
 
 ```
-wssh --port=8080 --sslport=4433 --certfile='cert.crt' --keyfile='cert.key' --xheaders=False --policy=reject
+wssh --port=8080 --sslport=4433 --certfile='cert.crt' --keyfile='cert.key' --xheaders=False
 ```
 
  --policy=reject 
@@ -18,6 +18,8 @@ wssh --port=8080 --sslport=4433 --certfile='cert.crt' --keyfile='cert.key' --xhe
  
 配置自启动
 ----------
+
+编辑 `/lib/systemd/system/wssh.service
 
 ```
 [Unit]
@@ -27,8 +29,8 @@ After=network.target nss-lookup.target
 
 [Service]
 # If the version of systemd is 240 or above, then uncommenting Type=exec and commenting out Type=simple
-#Type=exec
-Type=simple
+Type=exec
+#Type=simple
 User=root
 #User=nobody
 NoNewPrivileges=true
