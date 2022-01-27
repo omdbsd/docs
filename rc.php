@@ -7,26 +7,31 @@
         $duration = trim($_POST['duration']);
         
         if(empty($duration)) {
-            echo "duration is empty" ; 
+            $command1 = "hlsdl -b -f -o /var/www/hub/" . $vname . ".ts "  . " '" . $surl . "' &" ;
         }
         else {
-            echo "not empty";
-        }
-        $command1 = "hlsdl -b -f -o /var/www/hub/" . $vname . ".ts -i " . $duration . " '" . $surl . "' &" ;
-        $str1 = shell_exec($command1);
+            $command1 = "hlsdl -b -f -o /var/www/hub/" . $vname . ".ts -i " . $duration . " '" . $surl . "' &" ;
+        }        
+        $str1 = shell_exec($command1);        
+        
         $command2 = "ffmpeg -y -i /var/www/hub/" . $vname . ".ts -c copy -movflags faststart /var/www/hub/" . $vname . ".mp4 </dev/null > /dev/null 2>&1 &";
         $str2 = shell_exec($command2);
     }
+
+
     if(isset($_POST['rcother'])) {
         $surl = trim($_POST['surl']);
         $vname = trim($_POST['vname']);
-        $duration = trim($_POST['duration']);        
+        $duration = trim($_POST['duration']); 
+        
         $command3 = "ffmpeg -y -i '" . $surl . "' -c copy -t " . $duration . " /var/www/hub/" . $vname . ".ts </dev/null > /dev/null 2>&1";
         $str3 = shell_exec($command3);
+        
         $command4 = "ffmpeg -y -i /var/www/hub/" . $vname . ".ts -c copy -movflags faststart /var/www/hub/" . $vname . ".mp4 </dev/null > /dev/null 2>&1 &";
         $str4 = shell_exec($command4);    
     }
 ?>
+
 <form action="rc_new.php" method="post">
     <p>stream url: <input type="text" name="surl" /></p>
     <p>video name: <input type="text" name="vname" /></p>
