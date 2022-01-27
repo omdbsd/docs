@@ -1,3 +1,6 @@
+
+https://linuxtut.com/en/726900e015e2f62d0ba6/
+
 1 Go to the app directory && heroku login
 
 $ cd app_name
@@ -27,6 +30,9 @@ web.1: up 2018/11/23 21:12:24 +0900 (~ 4m ago)
 $ heroku ps:stop run.2767(Process ID)
 
 
+refer:
+-----------
 
+https://stackoverflow.com/questions/45385384/how-can-i-run-as-root-on-heroku
 
 You cannot run as root on a Heroku Dyno, as Dynos are effectively containers, isolated from the host system. However, you should be able to install most packages via Buildpacks, either via first party supported buildpacks, thirdparty buildpacks, or via heroku-buildpack-apt. Attempting to alter any system files, will likely either not work, or will have unintended consequences.
