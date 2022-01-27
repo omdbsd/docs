@@ -36,3 +36,10 @@ refer:
 https://stackoverflow.com/questions/45385384/how-can-i-run-as-root-on-heroku
 
 You cannot run as root on a Heroku Dyno, as Dynos are effectively containers, isolated from the host system. However, you should be able to install most packages via Buildpacks, either via first party supported buildpacks, thirdparty buildpacks, or via heroku-buildpack-apt. Attempting to alter any system files, will likely either not work, or will have unintended consequences.
+
+
+refer 2
+-------
+
+https://stackoverflow.com/questions/52142083/how-do-i-install-ffmpeg-inside-heroku
+
