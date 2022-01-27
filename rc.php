@@ -5,6 +5,13 @@
         $surl = trim($_POST['surl']);        
         $vname = trim($_POST['vname']);
         $duration = trim($_POST['duration']);
+        
+        if(empty($duration)) {
+            echo "duration is empty" ; 
+        }
+        else {
+            echo "not empty";
+        }
         $command1 = "hlsdl -b -f -o /var/www/hub/" . $vname . ".ts -i " . $duration . " '" . $surl . "' &" ;
         $str1 = shell_exec($command1);
         $command2 = "ffmpeg -y -i /var/www/hub/" . $vname . ".ts -c copy -movflags faststart /var/www/hub/" . $vname . ".mp4 </dev/null > /dev/null 2>&1 &";
