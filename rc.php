@@ -27,7 +27,7 @@
         $str4 = shell_exec($command4);    
     }
 ?>
-<form action="rc.php" method="post">
+<form action="rc_new.php" method="post">
     <p>stream url: <input type="text" name="surl" /></p>
     <p>video name: <input type="text" name="vname" /></p>
     <p>duration (in seconds): <input type="text" name="duration" /></p>
