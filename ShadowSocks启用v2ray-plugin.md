@@ -71,3 +71,21 @@ nginx 的配置如下
 
 ### 客户端配置
 
+- 客户端下载：[shadowsocks-windows](https://github.com/shadowsocks/shadowsocks-windows/releases/latest)
+- 插件下载：[v2ray-plugin](https://github.com/shadowsocks/v2ray-plugin/releases/latest)
+
+下载完成将插件 v2ray-plugin.exe 解压到 shadowsocks 的文件夹中（使其与 shadowsocks.exe 平级），并按如下配置
+
+| ITEM | VALUE |
+| ----- | ----- |
+| server | example.com |
+| server_port | 443 |
+| password | whatever |
+| method | chacha20-ietf-poly1305 |
+| plugin | v2ray-plugin.exe |
+| plugin_opts | tls;host=example.com;path=/ray |
+| timeout | 5 |
+
+### 本文参考
+1. [ShadowSocks启用v2ray-plugin](https://www.shintaku.top/posts/shadowsocks-v2ray/?ivk_sa=1024320u)
+1. [Shadowsocks over websocket (HTTPS) 配置记录](https://ehye.github.io/2020/03/27/shadowsocks-over-tls/)
