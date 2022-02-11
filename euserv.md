@@ -1,4 +1,4 @@
-### resolve.conf重启失效
+### resolve.conf 重启失效
 
 修改 `/etc/resolvconf.conf`
 
@@ -7,3 +7,4 @@
 ```
 name_servers="2001:67c:2b0::4 2001:67c:2b0::6"
 ```
+
