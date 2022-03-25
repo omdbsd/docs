@@ -1,4 +1,4 @@
-##　编译 nginx
+## 编译 nginx
 
 下载 nginx 源码，以及 pcre、openssl、zlib。
 
