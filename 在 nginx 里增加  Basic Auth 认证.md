@@ -4,6 +4,7 @@
 
 ```
 $ printf "YOUR_USERNAME:$(openssl passwd -crypt YOUR_PASSWORD)\n" >> /etc/nginx/conf.d/passwd
+```
 
 ## 配置 Nginx
 
