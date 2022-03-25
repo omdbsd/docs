@@ -15,7 +15,7 @@ $ printf "YOUR_USERNAME:$(openssl passwd -crypt YOUR_PASSWORD)\n" >> /etc/nginx/
 
 location / {
         auth_basic "Hello World";
-        auth_basic_user_file conf.d/passwd;
-        
+        auth_basic_user_file conf.d/passwd;        
+
 ...
 ```
