@@ -51,6 +51,7 @@ $ printf "YOUR_USERNAME:$(openssl passwd -crypt YOUR_PASSWORD)\n" >> /etc/nginx/
 ```
 # upstream配置google的ip，ip可以通过 nslookup www.google.com.hk 命令获取，
 # 多运行几次nslookup会获取到多个IP，有助于避免触发google的防机器人检测。
+# 关闭vps的wgcf，只用google的ipv6地址。这样可以防止弹出“同意cookie”的对话框（可能是通过 cloudflare CDN 的缘故）。
 
 upstream www.google.com.hk {
     server [2a00:1450:4010:c0f::5e]:443 weight=1;
