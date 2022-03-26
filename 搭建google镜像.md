@@ -49,8 +49,39 @@ $ printf "YOUR_USERNAME:$(openssl passwd -crypt YOUR_PASSWORD)\n" >> /etc/nginx/
 之后，编辑 nginx.conf ，主要部分如下：
 
 ```
-    location / {
+# upstream配置google的ip，ip可以通过 nslookup www.google.com.hk 命令获取，
+# 多运行几次nslookup会获取到多个IP，有助于避免触发google的防机器人检测。
 
+upstream www.google.com.hk {
+    server [2a00:1450:4010:c0f::5e]:443 weight=1;
+    server [2a00:1450:4010:c0d::5e]:443 weight=1;
+    server [2a00:1450:400f:800::2003]:443 weight=1;
+    server [2a00:1450:4001:80f::2003]:443 weight=1;
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name www.example.com;
+    charset utf-8;
+
+    # Enforce HTTPS
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl http2 default_server;
+    listen [::]:443 ssl http2 default_server;
+    ssl_certificate       /fakesite_cert/www.example.com/signed_chain.crt;
+    ssl_certificate_key   /fakesite_cert/www.example.com/domain.key;
+    ssl_protocols         TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers           HIGH:!aNULL:!MD5;
+    server_name         www.example.com;
+    index index.html index.htm index.nginx-debian.html;
+    # root  /fakesite;
+    error_page 400 = /400.html;
+
+    location / {
         auth_basic "Hello World";
         auth_basic_user_file conf.d/passwd;
 
@@ -70,4 +101,5 @@ $ printf "YOUR_USERNAME:$(openssl passwd -crypt YOUR_PASSWORD)\n" >> /etc/nginx/
         subs_filter  http://www.google.com.hk https://www.example.com;   
         subs_filter  https://www.google.com.hk https://www.example.com;        
     }
+}
 ```
