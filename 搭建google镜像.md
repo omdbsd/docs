@@ -73,13 +73,13 @@ server {
 server {
     listen 443 ssl http2 default_server;
     listen [::]:443 ssl http2 default_server;
-    ssl_certificate       /fakesite_cert/www.example.com/signed_chain.crt;
-    ssl_certificate_key   /fakesite_cert/www.example.com/domain.key;
+    ssl_certificate       /path_to_cert/www.example.com/signed_chain.crt;
+    ssl_certificate_key   /path_to_cert/www.example.com/domain.key;
     ssl_protocols         TLSv1 TLSv1.1 TLSv1.2;
     ssl_ciphers           HIGH:!aNULL:!MD5;
     server_name         www.example.com;
     index index.html index.htm index.nginx-debian.html;
-    # root  /fakesite;
+    # root  /var/www/html;
     error_page 400 = /400.html;
 
     location / {
