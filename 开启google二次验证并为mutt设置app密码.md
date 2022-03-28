@@ -7,7 +7,7 @@
 - Follow the on-screen steps.
 
 
-## enablｅ Google 2-step verification and using an app-specific password for mutt.
+## enable Google 2-step verification and using an app-specific password for mutt.
 
 More detail:
 
