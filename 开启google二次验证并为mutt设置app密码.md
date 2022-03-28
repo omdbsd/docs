@@ -1,7 +1,7 @@
 ## Turn on 2-Step Verification
 
 - Activate 2-Step Verification
-- Open your Google Account.
+- Open your [Google Account](https://myaccount.google.com/).
 - In the navigation panel, select Security.
 - Under “Signing in to Google,” select 2-Step Verification and then Get started.
 - Follow the on-screen steps.
